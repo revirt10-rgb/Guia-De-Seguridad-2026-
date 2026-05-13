@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware y Seguridad Informática - Neon Edition</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            background: rgba(15, 15, 25, 0.95);
+            max-width: 850px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3), 0 10px 40px rgba(0,0,0,0.8);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 { 
+            color: #fff; 
+            margin-bottom: 5px; 
+            text-transform: uppercase; 
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(79, 172, 254, 0.8);
+        }
+        
+        p.instruccion { color: #aaa; margin-bottom: 25px; font-style: italic; }
+
+        .grupo-botones {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            font-weight: bold;
+            transition: 0.4s;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        button:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
+            filter: brightness(1.2);
+        }
+
+        .btn-sec { 
+            background: linear-gradient(to right, #f83600 0%, #f9d423 100%); 
+            box-shadow: 0 0 15px rgba(248, 54, 0, 0.4);
+        }
+
+        .btn-green { 
+            background: linear-gradient(to right, #11998e 0%, #38ef7d 100%); 
+            box-shadow: 0 0 15px rgba(56, 239, 125, 0.4);
+        }
+
+        #info-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: left;
+            line-height: 1.8;
+            min-height: 250px;
+            border-bottom: 5px solid #4facfe;
+            font-size: 1.05rem;
+            color: #e0e0e0;
+            margin-top: 10px;
+        }
+
+        h3 { 
+            color: #00f2fe; 
+            margin-top: 0; 
+            border-bottom: 2px solid #4facfe; 
+            display: inline-block; 
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+        }
+
+        /* ESTILOS DE INTEGRANTES */
+        .creditos {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        .creditos strong { color: #00f2fe; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .integrantes-lista {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .columna-creditos {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+        .rol { color: #38ef7d; font-size: 0.75rem; font-weight: bold; }
+
+        a { color: #38ef7d; font-weight: bold; text-decoration: none; border-bottom: 1px solid #38ef7d; }
+        a:hover { color: #fff; text-shadow: 0 0 10px #38ef7d; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Guía Tecnológica 2026</h1>
+    <p class="instruccion">Interacción Neón: Selecciona una categoría</p>
+
+    <div class="grupo-botones">
+        <button onclick="mostrar('cpu')">Procesador (CPU)</button>
+        <button onclick="mostrar('ram')">Memoria RAM</button>
+        <button onclick="mostrar('almacenamiento')">Discos Duros</button>
+    </div>
+
+    <div class="grupo-botones">
+        <button class="btn-sec" onclick="mostrar('virus')">Seguridad: Virus</button>
+        <button class="btn-sec" onclick="mostrar('estafas')">Evitar Estafas</button>
+    </div>
+
+    <div class="grupo-botones">
+        <button class="btn-green" onclick="mostrar('antivirus')">Software Antivirus</button>
+        <button class="btn-green" onclick="mostrar('adblockers')">Bloqueadores (Adblock)</button>
+    </div>
+
+    <div id="info-box">
+        <p style="text-align:center; color:#666;">Esperando selección de sistema...</p>
+    </div>
+
+    <div class="creditos">
+        <div class="integrantes-lista">
+            <div class="columna-creditos">
+                <strong>Integrantes Principales</strong><br>
+                Ronnier Perez <span class="rol">(Programador)</span><br>
+                Orber Lopez <span class="rol">(Ideas)</span><br>
+                Samuel Colina <span class="rol">(Decoración)</span><br>
+                Mariano Sanchez <span class="rol">(Búsqueda)</span>
+            </div>
+            <div class="columna-creditos">
+                <strong>Relleno</strong><br>
+                Josimar Mijares<br>
+                Skarlet Mendoza
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function mostrar(tema) {
+        const box = document.getElementById('info-box');
+        let colorBarra = "#4facfe";
+        let colorTitulo = "#00f2fe";
+        
+        if (tema === 'virus' || tema === 'estafas') {
+            colorBarra = "#f83600";
+            colorTitulo = "#f9d423";
+        }
+        if (tema === 'antivirus' || tema === 'adblockers') {
+            colorBarra = "#38ef7d";
+            colorTitulo = "#11998e";
+        }
+        
+        box.style.borderBottomColor = colorBarra;
+        
+        let html = "";
+
+        if(tema === 'cpu') {
+            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">La Unidad Central de Procesamiento (CPU)</h3><br>
+            El CPU es el componente principal que ejecuta las instrucciones de los programas. Se encarga de realizar cálculos aritméticos y lógicos fundamentales para que el sistema operativo funcione. Imagínalo como el cerebro de la máquina: recibe señales, las procesa y envía órdenes al resto de las piezas. Su potencia se mide en gigahercios (GHz) y en el número de núcleos que posee. Un procesador con más núcleos puede realizar múltiples tareas pesadas simultáneamente sin trabarse. Es vital mantenerlo refrigerado con un ventilador o disipador, ya que genera mucho calor al trabajar. Sin un CPU, la computadora simplemente no podría "pensar" ni realizar ninguna acción.`;
+        } 
+        else if(tema === 'ram') {
+            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Memoria de Acceso Aleatorio (RAM)</h3><br>
+            La RAM es la memoria volátil donde la computadora almacena los datos de las aplicaciones que estás usando en el momento actual. A diferencia del disco duro, la RAM es extremadamente rápida, lo que permite que el procesador acceda a la información casi al instante. Sin embargo, toda la información guardada aquí se borra automáticamente cuando apagas o reinicias la PC. Si tienes poca memoria RAM, notarás que la computadora se pone lenta al abrir muchas pestañas en el navegador o juegos pesados. Por eso, tener una buena capacidad (como 8GB o 16GB) es clave para la fluidez del sistema. Es, esencialmente, el espacio de trabajo temporal donde ocurre toda la acción inmediata.`;
+        }
+        else if(tema === 'almacenamiento') {
+            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Discos Duros (HDD) y Unidades Sólidas (SSD)</h3><br>
+            El almacenamiento es el lugar donde se guardan de forma permanente tus fotos, videos, documentos y el propio sistema operativo. Existen dos tecnologías principales: los HDD antiguos, que usan discos mecánicos que giran, y los modernos SSD, que usan chips electrónicos. Los SSD son hasta diez veces más rápidos que los discos duros tradicionales, permitiendo que la PC encienda en segundos. Mientras que el HDD es mejor para guardar archivos masivos por su bajo costo, el SSD es indispensable para el rendimiento general hoy en día. Sin un dispositivo de almacenamiento, no tendrías donde instalar tus programas ni guardar tus progresos. Es la "biblioteca" de archivos de tu computadora que sobrevive al apagado.`;
+        }
+        else if(tema === 'virus') {
+            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Virus y Software Malicioso (Malware)</h3><br>
+            Los virus informáticos son programas diseñados para infiltrarse en tu sistema con el fin de dañar archivos, robar información o espiar tus actividades. Existen muchos tipos, como los troyanos, que parecen archivos inofensivos pero abren puertas a hackers, o el ransomware, que bloquea tu PC y pide dinero. La mayoría de las infecciones ocurren por descargar archivos de sitios sospechosos o insertar memorias USB contaminadas. Un virus puede ralentizar tu equipo, borrar tus tareas escolares o incluso capturar tus contraseñas de redes sociales. La mejor defensa es tener un antivirus activo y mantener Windows actualizado para cerrar agujeros de seguridad. La prevención es la herramienta más importante contra el software malicioso.`;
+        }
+        else if(tema === 'estafas') {
+            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Cómo evitar Estafas y Phishing</h3><br>
+            Las estafas en línea, especialmente el phishing, intentan engañarte para que entregues voluntariamente tus claves o datos bancarios. Los atacantes suelen enviar correos o mensajes que parecen de empresas reales como Netflix, Google o bancos conocidos. Estos mensajes suelen usar un tono de urgencia, diciendo que tu cuenta será cerrada si no haces clic en un enlace de inmediato. Para protegerte, nunca reveles tus contraseñas por mensajes y verifica siempre que la dirección del remitente sea la oficial. Otra capa de seguridad vital es activar la verificación en dos pasos (2FA) en todas tus aplicaciones importantes. Si algo parece demasiado bueno para ser verdad, como premios gratis, lo mejor es desconfiar y cerrar la pestaña.`;
+        }
+        else if(tema === 'antivirus') {
+            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Software Antivirus Recomendado</h3><br>
+            Un antivirus es tu primera línea de defensa. Analiza cada archivo que descargas y cada programa que ejecutas en busca de firmas de virus conocidos. Para los estudiantes, lo ideal es tener una protección que no ponga lenta la PC. Windows Defender ya viene incluido y es excelente, pero si quieres una capa extra, existen empresas con años de reputación que ofrecen versiones gratuitas muy potentes. Es crucial que el programa se actualice automáticamente todas las semanas, ya que los hackers crean miles de amenazas nuevas cada día.<br><br>
+            <strong>Descarga opciones confiables aquí:</strong><br>
+            • <a href="https://www.avast.com/es-es/free-antivirus-download" target="_blank">Avast Free Antivirus</a><br>
+            • <a href="https://www.bitdefender.es/solutions/free.html" target="_blank">Bitdefender Free Edition</a>`;
+        }
+        else if(tema === 'adblockers') {
+            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Bloqueadores de Publicidad (Adblockers)</h3><br>
+            Los adblockers no solo sirven para quitar los anuncios molestos de YouTube o de las páginas de noticias, sino que son herramientas de seguridad clave. Muchos virus se transmiten a través de anuncios falsos que aparecen en sitios de descargas. Al usar un bloqueador, impides que esos códigos maliciosos se carguen en tu navegador. Esto no solo protege tu privacidad al evitar que las empresas te rastreen, sino que también hace que las páginas carguen mucho más rápido, ahorrando datos de internet y memoria RAM en tu computadora.<br><br>
+            <strong>Descarga los mejores aquí:</strong><br>
+            • <a href="https://ublockorigin.com/" target="_blank">uBlock Origin (El más ligero)</a><br>
+            • <a href="https://adblockplus.org/" target="_blank">AdBlock Plus (El más famoso)</a>`;
+        }
+
+        box.innerHTML = html;
+        box.style.animation = "none";
+        setTimeout(() => { box.style.animation = "fadeIn 0.5s"; }, 10);
+    }
+</script>
+
+</body>
+</html>
