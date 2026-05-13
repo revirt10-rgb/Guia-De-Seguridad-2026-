@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hardware y Seguridad Informática - Neon Edition</title>
+    <title>Guía Tecnológica 2026 - Master Profesional</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,171 +11,180 @@
             padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
             background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
             background-size: cover;
+            color: white;
         }
 
-        .container {
-            background: rgba(15, 15, 25, 0.95);
-            max-width: 850px;
-            padding: 40px;
+        .main-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 25px;
+            max-width: 1250px;
+            width: 100%;
+        }
+
+        /* BARRA LATERAL */
+        .sidebar {
+            background: rgba(10, 10, 20, 0.95);
+            padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3), 0 10px 40px rgba(0,0,0,0.8);
-            text-align: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        h1 { 
-            color: #fff; 
-            margin-bottom: 5px; 
-            text-transform: uppercase; 
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px rgba(79, 172, 254, 0.8);
-        }
-        
-        p.instruccion { color: #aaa; margin-bottom: 25px; font-style: italic; }
-
-        .grupo-botones {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 15px;
+        .seccion-titulo {
+            font-size: 0.75rem;
+            color: #00f2fe;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 25px 0 12px 0;
+            border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+            padding-bottom: 5px;
+            display: block;
         }
 
-        button {
-            padding: 12px 20px;
+        .nav-btn {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 8px;
             cursor: pointer;
             border: none;
-            border-radius: 50px;
-            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            font-weight: bold;
-            transition: 0.4s;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-            text-transform: uppercase;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #bbb;
+            text-align: left;
+            transition: 0.3s;
+            font-weight: 600;
             font-size: 0.85rem;
+            display: flex;
+            align-items: center;
         }
 
-        button:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
-            filter: brightness(1.2);
+        .nav-btn:hover {
+            background: rgba(0, 242, 254, 0.15);
+            color: #fff;
+            transform: translateX(8px);
         }
 
-        .btn-sec { 
-            background: linear-gradient(to right, #f83600 0%, #f9d423 100%); 
-            box-shadow: 0 0 15px rgba(248, 54, 0, 0.4);
+        /* ÁREA DE CONTENIDO */
+        .content-area {
+            background: rgba(15, 15, 25, 0.92);
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 15px 60px rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            min-height: 700px;
         }
 
-        .btn-green { 
-            background: linear-gradient(to right, #11998e 0%, #38ef7d 100%); 
-            box-shadow: 0 0 15px rgba(56, 239, 125, 0.4);
-        }
+        h1 { margin-top: 0; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 15px #4facfe; }
 
-        #info-box {
-            background: rgba(255, 255, 255, 0.05);
+        .card-info {
+            background: rgba(255, 255, 255, 0.04);
             padding: 25px;
             border-radius: 15px;
-            text-align: left;
+            border-left: 5px solid #4facfe;
+            margin-bottom: 20px;
             line-height: 1.8;
-            min-height: 250px;
-            border-bottom: 5px solid #4facfe;
-            font-size: 1.05rem;
-            color: #e0e0e0;
-            margin-top: 10px;
+            font-size: 1rem;
+            animation: fadeIn 0.5s ease forwards;
         }
 
-        h3 { 
-            color: #00f2fe; 
-            margin-top: 0; 
-            border-bottom: 2px solid #4facfe; 
-            display: inline-block; 
-            margin-bottom: 15px;
-            text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+        .label { color: #00f2fe; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px; display: block; }
+
+        .img-main {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid rgba(0, 242, 254, 0.3);
         }
 
-        .creditos {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px dashed rgba(255, 255, 255, 0.2);
-            text-align: center;
-            font-size: 0.85rem;
-            color: #ccc;
+        .download-link {
+            display: inline-block;
+            margin: 15px 12px 0 0;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
         }
 
-        .creditos strong { color: #00f2fe; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .integrantes-lista {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+        .download-link:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(56, 239, 125, 0.4); }
+
+        .footer-info {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
             gap: 20px;
-            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #999;
         }
 
-        .columna-creditos {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 10px 15px;
-            border-radius: 10px;
-            min-width: 200px;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        .rol { color: #38ef7d; font-size: 0.75rem; font-weight: bold; }
-
-        a { color: #38ef7d; font-weight: bold; text-decoration: none; border-bottom: 1px solid #38ef7d; }
-        a:hover { color: #fff; text-shadow: 0 0 10px #38ef7d; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 1000px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Guía Tecnológica 2026</h1>
-    <p class="instruccion">Interacción Neón: Selecciona una categoría</p>
+<div class="main-layout">
+    <div class="sidebar">
+        <h2 style="color: #fff; border-left: 4px solid #00f2fe; padding-left: 10px;">GUÍA 2026</h2>
+        
+        <span class="seccion-titulo">💻 Información de Hardware</span>
+        <button class="nav-btn" onclick="mostrar('cpu')">🧠 Procesador (CPU)</button>
+        <button class="nav-btn" onclick="mostrar('ram')">⚡ Memoria RAM</button>
+        <button class="nav-btn" onclick="mostrar('almacenamiento')">💾 SSD vs HDD</button>
+        <button class="nav-btn" onclick="mostrar('anatomia')">🔌 Placa Base</button>
 
-    <div class="grupo-botones">
-        <button onclick="mostrar('cpu')">Procesador (CPU)</button>
-        <button onclick="mostrar('ram')">Memoria RAM</button>
-        <button onclick="mostrar('almacenamiento')">Discos Duros</button>
+        <span class="seccion-titulo" style="color: #f83600;">🛡️ Seguridad Digital</span>
+        <button class="nav-btn" onclick="mostrar('virus')">🦠 Virus y Malware</button>
+        <button class="nav-btn" onclick="mostrar('estafas')">🎣 Phishing/Estafas</button>
+        <button class="nav-btn" onclick="mostrar('alertas')">⚠️ Señales de Alerta</button>
+        <button class="nav-btn" onclick="mostrar('antivirus')">🛡️ Antivirus</button>
+        <button class="nav-btn" onclick="mostrar('adblockers')">🚫 AdBlockers</button>
+
+        <span class="seccion-titulo" style="color: #6a11cb;">🛠️ Mantenimiento</span>
+        <button class="nav-btn" onclick="mostrar('limpieza')">🧹 Limpieza Física</button>
+        <button class="nav-btn" onclick="mostrar('temperatura')">🔥 Control de Calor</button>
+        <button class="nav-btn" onclick="mostrar('inicio')">🚀 Optimizar Inicio</button>
     </div>
 
-    <div class="grupo-botones">
-        <button class="btn-sec" onclick="mostrar('virus')">Seguridad: Virus</button>
-        <button class="btn-sec" onclick="mostrar('estafas')">Evitar Estafas</button>
-    </div>
+    <div class="content-area">
+        <h1>SISTEMA DE INFORMACIÓN</h1>
+        <div id="display-box">
+            <p style="text-align: center; margin-top: 150px; color: #555; font-size: 1.2rem;">
+                Bienvenido, Ronnier. Selecciona un módulo en la izquierda para desplegar la información técnica.
+            </p>
+        </div>
 
-    <div class="grupo-botones">
-        <button class="btn-green" onclick="mostrar('antivirus')">Software Antivirus</button>
-        <button class="btn-green" onclick="mostrar('adblockers')">Bloqueadores (Adblock)</button>
-    </div>
-
-    <div id="info-box">
-        <p style="text-align:center; color:#666;">Esperando selección de sistema...</p>
-    </div>
-
-    <div class="creditos">
-        <div class="integrantes-lista">
-            <div class="columna-creditos">
-                <strong>Integrantes Principales</strong><br>
-                Ronnier Perez <span class="rol">(Programar página)</span><br>
-                Orber Lopez <span class="rol">(Ideas)</span><br>
-                Samuel Colina <span class="rol">(Decoración)</span><br>
-                Josimar Mijares <span class="rol">(Búsqueda)</span>
+        <div class="footer-info">
+            <div>
+                <strong style="color: #00f2fe;">EQUIPO DE DESARROLLO:</strong><br>
+                Ronnier Perez (Programación y Estructura)<br>
+                Orber Lopez (Logística de Ideas)<br>
+                Samuel Colina (Diseño Visual)<br>
+                Josimar Mijares (Investigación de Datos)
             </div>
-            <div class="columna-creditos">
-                <strong>Relleno</strong><br>
-                Mariano Sanchez<br>
-                Skarlet Mendoza<br>
-                Yackselis Sanchez<br>
-                Sebastian Gutierrez
+            <div>
+                <strong style="color: #aaa;">COLABORADORES:</strong><br>
+                Mariano Sanchez, Skarlet Mendoza,<br>
+                Yackselis Sanchez, Sebastian Gutierrez
             </div>
         </div>
     </div>
@@ -183,61 +192,104 @@
 
 <script>
     function mostrar(tema) {
-        const box = document.getElementById('info-box');
-        let colorBarra = "#4facfe";
-        let colorTitulo = "#00f2fe";
-        
-        if (tema === 'virus' || tema === 'estafas') {
-            colorBarra = "#f83600";
-            colorTitulo = "#f9d423";
-        }
-        if (tema === 'antivirus' || tema === 'adblockers') {
-            colorBarra = "#38ef7d";
-            colorTitulo = "#11998e";
-        }
-        
-        box.style.borderBottomColor = colorBarra;
-        
+        const box = document.getElementById('display-box');
         let html = "";
 
         if(tema === 'cpu') {
-            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">La Unidad Central de Procesamiento (CPU)</h3><br>
-            El CPU es el componente principal que ejecuta las instrucciones de los programas. Se encarga de realizar cálculos aritméticos y lógicos fundamentales para que el sistema operativo funcione. Imagínalo como el cerebro de la máquina: recibe señales, las procesa y envía órdenes al resto de las piezas. Su potencia se mide en gigahercios (GHz) y en el número de núcleos que posee. Un procesador con más núcleos puede realizar múltiples tareas pesadas simultáneamente sin trabarse. Es vital mantenerlo refrigerado con un ventilador o disipador, ya que genera mucho calor al trabajar. Sin un CPU, la computadora simplemente no podría "pensar" ni realizar ninguna acción.`;
-        } 
+            html = `<h3>Procesador (CPU): El Cerebro del Sistema</h3>
+            <div class="card-info">
+                <span class="label">Información Detallada</span>
+                La Unidad Central de Procesamiento es el componente más importante, ya que interpreta y ejecuta todas las órdenes que le das a la computadora. Imagínalo como el cerebro humano: recibe señales de los periféricos, procesa cálculos matemáticos complejos en milisegundos y envía instrucciones al resto del hardware para que todo funcione. Su rendimiento depende de la velocidad de reloj (medida en GHz) y del número de núcleos; cuantos más núcleos tenga, más tareas puede hacer al mismo tiempo sin trabarse. Es vital mantenerlo refrigerado, ya que al procesar millones de datos genera mucho calor. Si el CPU falla o se sobrecalienta, toda la computadora se apaga por seguridad. Hoy en día, marcas como Intel y AMD dominan el mercado con procesadores cada vez más eficientes. Sin un procesador, la PC sería simplemente un montón de metal sin vida.
+            </div>
+            <img class="img-main" src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80">`;
+        }
         else if(tema === 'ram') {
-            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Memoria de Acceso Aleatorio (RAM)</h3><br>
-            La RAM es la memoria volátil donde la computadora almacena los datos de las aplicaciones que estás usando en el momento actual. A diferencia del disco duro, la RAM es extremadamente rápida, lo que permite que el procesador acceda a la información casi al instante. Sin embargo, toda la información guardada aquí se borra automáticamente cuando apagas o reinicias la PC. Si tienes poca memoria RAM, notarás que la computadora se pone lenta al abrir muchas pestañas en el navegador o juegos pesados. Por eso, tener una buena capacidad (como 8GB o 16GB) es clave para la fluidez del sistema. Es, esencialmente, el espacio de trabajo temporal donde ocurre toda la acción inmediata.`;
+            html = `<h3>Memoria RAM: El Espacio de Trabajo Inmediato</h3>
+            <div class="card-info">
+                <span class="label">Información Detallada</span>
+                La RAM (Random Access Memory) es una memoria de ultra alta velocidad donde la PC guarda los datos que está usando justo en este momento. A diferencia del disco duro, la RAM es volátil, lo que significa que todo lo que hay en ella se borra al apagar la computadora. Es fundamental para el "multitasking" o multitarea: si tienes muchas pestañas de Chrome abiertas y un juego corriendo al mismo tiempo, es la RAM la que permite que saltes de una ventana a otra sin lag. Actualmente, tener menos de 8GB de RAM causa que los sistemas modernos se sientan lentos. La evolución ha pasado de DDR3 a DDR4, y ahora DDR5, que ofrece velocidades increíbles para creadores de contenido y gamers. Si notas que tu PC "se congela" al abrir varios programas, lo más probable es que necesites aumentar este componente. Es, básicamente, la mesa donde el procesador pone todas sus herramientas para trabajar rápido.
+            </div>
+            <img class="img-main" src="https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=800&q=80">`;
         }
         else if(tema === 'almacenamiento') {
-            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Discos Duros (HDD) y Unidades Sólidas (SSD)</h3><br>
-            El almacenamiento es el lugar donde se guardan de forma permanente tus fotos, videos, documentos y el propio sistema operativo. Existen dos tecnologías principales: los HDD antiguos, que usan discos mecánicos que giran, y los modernos SSD, que usan chips electrónicos. Los SSD son hasta diez veces más rápidos que los discos duros tradicionales, permitiendo que la PC encienda en segundos. Mientras que el HDD es mejor para guardar archivos masivos por su bajo costo, el SSD es indispensable para el rendimiento general hoy en día. Sin un dispositivo de almacenamiento, no tendrías donde instalar tus programas ni guardar tus progresos. Es la "biblioteca" de archivos de tu computadora que sobrevive al apagado.`;
+            html = `<h3>Discos SSD vs HDD: Almacenamiento Dinámico</h3>
+            <div class="card-info">
+                <span class="label">Información Detallada</span>
+                El almacenamiento es donde guardas tus fotos, juegos y el sistema operativo para siempre. Los HDD (discos duros tradicionales) funcionan con platos giratorios y agujas mecánicas, lo que los hace lentos y ruidosos, aunque son muy baratos para guardar terabytes de información. Por otro lado, los SSD son electrónicos y no tienen partes móviles, lo que los hace hasta 10 o 20 veces más rápidos. Instalar Windows en un SSD hace que la PC prenda en 10 segundos en lugar de un minuto. Existen formatos como el SATA (que parece un disco pequeño) y el NVMe M.2 (que parece una barrita de chicle y es el más veloz). Aunque los SSD son un poco más caros, son la mejor mejora que puedes hacerle a una computadora vieja. Un buen consejo es usar un SSD para el sistema y los programas, y un HDD grande para guardar videos y archivos pesados que no necesiten velocidad extrema.
+            </div>
+            <img class="img-main" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80">`;
+        }
+        else if(tema === 'anatomia') {
+            html = `<h3>Anatomía de la Placa Base (Motherboard)</h3>
+            <div class="card-info">
+                <span class="label">Información Detallada</span>
+                La placa base es la columna vertebral de tu computadora, ya que conecta todos los componentes entre sí para que puedan comunicarse. En ella encontramos el socket o zócalo, que es donde se encaja el procesador con mucho cuidado para no doblar los pines. También están las ranuras DIMM para la memoria RAM, los puertos SATA para los discos y el slot PCIe, donde se conecta la tarjeta de video (GPU). En la parte trasera están los puertos USB, HDMI y de red que ves por fuera del gabinete. Es muy importante elegir una placa base compatible con tu CPU y que tenga buena calidad en sus condensadores para que la energía llegue de forma estable. Si la placa base recibe una descarga eléctrica, puede quemar todos los componentes conectados, por lo que siempre se recomienda usar un protector de voltaje. Conocer su anatomía es el primer paso para aprender a armar o reparar tu propia PC en el futuro.
+            </div>
+            <img class="img-main" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">`;
         }
         else if(tema === 'virus') {
-            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Virus y Software Malicioso (Malware)</h3><br>
-            Los virus informáticos son programas diseñados para infiltrarse en tu sistema con el fin de dañar archivos, robar información o espiar tus actividades. Existen muchos tipos, como los troyanos, que parecen archivos inofensivos pero abren puertas a hackers, o el ransomware, que bloquea tu PC y pide dinero. La mayoría de las infecciones ocurren por descargar archivos de sitios sospechosos o insertar memorias USB contaminadas. Un virus puede ralentizar tu equipo, borrar tus tareas escolares o incluso capturar tus contraseñas de redes sociales. La mejor defensa es tener un antivirus activo y mantener Windows actualizado para cerrar agujeros de seguridad. La prevención es la herramienta más importante contra el software malicioso.`;
+            html = `<h3 style="color:#f83600">Virus y Malware: Amenazas Silenciosas</h3>
+            <div class="card-info" style="border-left-color:#f83600">
+                <span class="label">Seguridad Informativa</span>
+                Los virus informáticos son programas diseñados para entrar en tu sistema sin permiso para robar datos, espiar lo que haces o simplemente destruir archivos. Existen los troyanos, que se esconden dentro de un instalador que parece legal, y los gusanos, que se propagan solos por la red local. Una de las amenazas más peligrosas actualmente es el ransomware, que cifra todos tus documentos y te pide dinero (en criptomonedas) para devolvértelos. La mayoría de los virus entran por descargar juegos "crackeados", películas piratas o abrir archivos adjuntos de correos extraños. Un síntoma claro de infección es que la PC se pone extremadamente lenta, el ventilador suena mucho sin estar haciendo nada, o aparecen programas que tú nunca instalaste. La mejor protección no es solo un software, sino el sentido común del usuario al navegar por sitios seguros y no confiar en links extraños.
+            </div>`;
         }
         else if(tema === 'estafas') {
-            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Cómo evitar Estafas y Phishing</h3><br>
-            Las estafas en línea, especialmente el phishing, intentan engañarte para que entregues voluntariamente tus claves o datos bancarios. Los atacantes suelen enviar correos o mensajes que parecen de empresas reales como Netflix, Google o bancos conocidos. Estos mensajes suelen usar un tono de urgencia, diciendo que tu cuenta será cerrada si no haces clic en un enlace de inmediato. Para protegerte, nunca reveles tus contraseñas por mensajes y verifica siempre que la dirección del remitente sea la oficial. Otra capa de seguridad vital es activar la verificación en dos pasos (2FA) en todas tus aplicaciones importantes. Si algo parece demasiado bueno para ser verdad, como premios gratis, lo mejor es desconfiar y cerrar la pestaña.`;
+            html = `<h3 style="color:#f83600">Phishing: Cómo Roban tus Cuentas</h3>
+            <div class="card-info" style="border-left-color:#f83600">
+                <span class="label">Seguridad Informativa</span>
+                El Phishing es una técnica de engaño donde el atacante se hace pasar por una empresa de confianza, como Netflix, Facebook o tu banco local. Te envían un mensaje diciendo que "tu cuenta ha sido bloqueada" o que "has ganado un premio" y te piden hacer clic en un enlace. Al entrar, verás una página que luce idéntica a la real, pero cuando pones tu usuario y contraseña, se los estás enviando directamente al hacker. Estas estafas también ocurren mucho por WhatsApp con sorteos falsos. Para protegerte, siempre mira la dirección del sitio (URL); por ejemplo, si dice "netfIix.com" con una 'i' mayúscula en lugar de una 'l', es una estafa. Nunca des tus claves por mensaje y activa siempre la verificación en dos pasos (2FA) en todas tus cuentas. El eslabón más débil de la seguridad informática siempre es el ser humano, por eso la educación es la mejor defensa.
+            </div>`;
+        }
+        else if(tema === 'alertas') {
+            html = `<h3 style="color:#f83600">Señales de Alerta de Seguridad</h3>
+            <div class="card-info" style="border-left-color:#f83600">
+                <span class="label">Seguridad Informativa</span>
+                Aprender a reconocer cuándo algo anda mal puede salvar tu información personal antes de que sea tarde. Una señal muy común son los "Pop-ups" o ventanas emergentes que aparecen de la nada diciendo que tienes 50 virus y que hagas clic para limpiar. Otra alerta roja es que tu navegador cambie de buscador predeterminado solo (por ejemplo, que de Google pase a uno llamado "Bing-Search" o algo raro). También debes sospechar si recibes correos con muchos errores de ortografía o que usan un tono de urgencia extrema. Si notas que la luz de tu cámara web se prende sola, o si el mouse se mueve sin que lo toques, desconecta el internet de inmediato. Mantener el Administrador de Tareas abierto te permite ver si hay procesos con nombres extraños que están consumiendo mucho internet o procesador. No ignores estas señales; una PC que se comporta de forma "extraña" casi siempre tiene una razón de seguridad detrás.
+            </div>`;
         }
         else if(tema === 'antivirus') {
-            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Software Antivirus Recomendado</h3><br>
-            Un antivirus es tu primera línea de defensa. Analiza cada archivo que descargas y cada programa que ejecutas en busca de firmas de virus conocidos. Para los estudiantes, lo ideal es tener una protección que no ponga lenta la PC. Windows Defender ya viene incluido y es excelente, pero si quieres una capa extra, existen empresas con años de reputación que ofrecen versiones gratuitas muy potentes. Es crucial que el programa se actualice automáticamente todas las semanas, ya que los hackers crean miles de amenazas nuevas cada día.<br><br>
-            <strong>Descarga opciones confiables aquí:</strong><br>
-            • <a href="https://www.avast.com/es-es/free-antivirus-download" target="_blank">Avast Free Antivirus</a><br>
-            • <a href="https://www.bitdefender.es/solutions/free.html" target="_blank">Bitdefender Free Edition</a>`;
+            html = `<h3 style="color:#38ef7d">Software Antivirus Recomendado</h3>
+            <div class="card-info" style="border-left-color:#38ef7d">
+                <span class="label">Soluciones</span>
+                El antivirus es la herramienta que escanea cada archivo y página web en busca de códigos maliciosos conocidos. Hoy en día, Windows Defender (que viene con Windows 10 y 11) es excelente y suficiente para la mayoría de los usuarios siempre que se mantenga actualizado. Sin embargo, para una capa de seguridad extra, existen opciones gratuitas y de pago con mucha trayectoria. Estas herramientas analizan el comportamiento de los programas; si un archivo intenta borrar carpetas del sistema, el antivirus lo bloquea antes de que ocurra el daño. Es vital no tener dos antivirus instalados al mismo tiempo, ya que se pelean entre ellos y ponen la PC muy lenta. Asegúrate de programar un escaneo completo al menos una vez al mes para revisar carpetas ocultas donde los virus suelen esconderse después de entrar.<br><br>
+                <a href="https://www.avast.com/es-es/free-antivirus-download" target="_blank" class="download-link">Avast Free</a>
+                <a href="https://www.bitdefender.es/solutions/free.html" target="_blank" class="download-link">Bitdefender Free</a>
+            </div>`;
         }
         else if(tema === 'adblockers') {
-            html = `<h3 style="color:${colorTitulo}; border-color:${colorBarra}">Bloqueadores de Publicidad (Adblockers)</h3><br>
-            Los adblockers no solo sirven para quitar los anuncios molestos de YouTube o de las páginas de noticias, sino que son herramientas de seguridad clave. Muchos virus se transmiten a través de anuncios falsos que aparecen en sitios de descargas. Al usar un bloqueador, impides que esos códigos maliciosos se carguen en tu navegador. Esto no solo protege tu privacidad al evitar que las empresas te rastreen, sino que también hace que las páginas carguen mucho más rápido, ahorrando datos de internet y memoria RAM en tu computadora.<br><br>
-            <strong>Descarga los mejores aquí:</strong><br>
-            • <a href="https://ublockorigin.com/" target="_blank">uBlock Origin (El más ligero)</a><br>
-            • <a href="https://adblockplus.org/" target="_blank">AdBlock Plus (El más famoso)</a>`;
+            html = `<h3 style="color:#38ef7d">Bloqueadores de Publicidad y Malware</h3>
+            <div class="card-info" style="border-left-color:#38ef7d">
+                <span class="label">Soluciones</span>
+                Mucha gente cree que los bloqueadores de anuncios son solo para no ver publicidad en YouTube, pero en realidad son herramientas de seguridad muy potentes. Muchos sitios de descargas de tareas o de películas piratas usan anuncios maliciosos llamados "Malvertising", que pueden infectar tu PC solo con que el anuncio se cargue en pantalla, sin que hagas clic. Un buen AdBlocker impide que estos scripts se ejecuten, protegiendo tu privacidad de los rastreadores de datos que te siguen por toda la web. Además, al no cargar imágenes y videos publicitarios pesados, las páginas web abren mucho más rápido y ahorras datos de internet. El estándar de oro hoy en día es uBlock Origin, porque es de código abierto, gratuito y consume poquísima memoria RAM en comparación con otros. Instalar uno es, quizás, la forma más fácil y rápida de mejorar tu experiencia en internet de inmediato.<br><br>
+                <a href="https://ublockorigin.com/" target="_blank" class="download-link">uBlock Origin</a>
+            </div>`;
+        }
+        else if(tema === 'limpieza') {
+            html = `<h3 style="color:#6a11cb">Tutorial: Limpieza Física</h3>
+            <div class="card-info" style="border-left-color:#6a11cb">
+                <span class="label">Paso a Paso</span>
+                El mantenimiento físico es tan importante como el software; una PC sucia es una PC que morirá pronto. El polvo se acumula en las aspas de los ventiladores y en las rejillas del disipador, creando una alfombra que impide el paso del aire. Esto causa "Thermal Throttling", que es cuando la PC baja su potencia a propósito para no quemarse, poniéndose lenta en juegos o tareas pesadas. Para limpiar, usa una lata de aire comprimido o una sopladora pequeña, asegurándote de no girar los ventiladores con el aire (sujétalos con un dedo) para no dañarlos. También es fundamental cambiar la pasta térmica del procesador cada 1 o 2 años; esta pasta se seca con el tiempo y deja de pasar el calor al ventilador. Mantener tu gabinete en un lugar elevado y no en el piso ayuda a que aspire menos polvo. Una limpieza profunda cada 6 meses hará que tus componentes duren muchísimos años más en perfecto estado.
+            </div>`;
+        }
+        else if(tema === 'temperatura') {
+            html = `<h3 style="color:#6a11cb">Tutorial: Control de Temperaturas</h3>
+            <div class="card-info" style="border-left-color:#6a11cb">
+                <span class="label">Paso a Paso</span>
+                El calor es el enemigo número uno de los componentes electrónicos. Cuando un CPU o una GPU trabajan, los electrones generan fricción y calor; si este calor no se disipa, los materiales del chip se degradan. Es vital monitorear las temperaturas usando programas gratuitos como HWMonitor o MSI Afterburner. En reposo (viendo internet), tu PC debería estar entre 35°C y 50°C. Jugando o editando video, es normal llegar a 70°C u 80°C, pero si ves que llega a 90°C o más, tienes un problema grave de ventilación o pasta térmica seca. Los sistemas modernos tienen sensores que apagan la PC antes de que el hardware se derrita, pero forzarlos a trabajar en altas temperaturas acorta su vida útil. Asegúrate de que el flujo de aire sea correcto: ventiladores metiendo aire fresco por el frente y sacando el aire caliente por detrás y arriba. Si tienes una laptop, usar una base refrigeradora puede ayudar a bajar hasta 5 grados la temperatura interna.
+            </div>`;
+        }
+        else if(tema === 'inicio') {
+            html = `<h3 style="color:#6a11cb">Tutorial: Optimización de Inicio</h3>
+            <div class="card-info" style="border-left-color:#6a11cb">
+                <span class="label">Paso a Paso</span>
+                ¿Has notado que con el tiempo tu PC tarda cada vez más en estar lista después de prenderla? Esto sucede porque muchos programas que instalas (como Spotify, Steam, Discord o Skype) se configuran para abrirse automáticamente apenas inicia Windows. Esto consume mucha memoria RAM y capacidad del procesador desde el segundo uno, ralentizando todo el sistema. Para solucionar esto, presiona las teclas Ctrl + Shift + Esc para abrir el Administrador de Tareas y ve a la pestaña de "Inicio". Ahí verás una lista de aplicaciones y su "Impacto de inicio". Deshabilita todas las que no necesites usar de inmediato; esto no borra el programa, solo impide que se abra solo. Solo con este paso, una PC puede pasar de tardar 2 minutos en prender a solo 20 segundos. También es bueno revisar los "Servicios" y desactivar los que no sean de Microsoft o de drivers importantes. Una PC optimizada es una PC que responde al instante a tus clics.
+            </div>`;
         }
 
         box.innerHTML = html;
         box.style.animation = "none";
-        setTimeout(() => { box.style.animation = "fadeIn 0.5s"; }, 10);
+        setTimeout(() => { box.style.animation = "fadeIn 0.5s ease forwards"; }, 10);
     }
 </script>
 
