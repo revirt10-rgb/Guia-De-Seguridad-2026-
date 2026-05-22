@@ -76,7 +76,7 @@
         }
 
         /* ==========================================================================
-           ESTILOS BASE Y FONDO ESTÁTICO
+           ESTILOS BASE Y FONDO ESTÁTICO (PC - SIN CAMBIOS)
            ========================================================================== */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -150,28 +150,12 @@
             transition: transform 0.25s ease;
         }
 
-        .btn-fb {
-            color: #00f2fe;
-            border: 1px solid rgba(0, 242, 254, 0.3);
-        }
-        .btn-fb:hover {
-            background: rgba(0, 242, 254, 0.15);
-            border-color: #00f2fe;
-            filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.8));
-            transform: translateY(-2px);
-        }
+        .btn-fb { color: #00f2fe; border: 1px solid rgba(0, 242, 254, 0.3); }
+        .btn-fb:hover { background: rgba(0, 242, 254, 0.15); border-color: #00f2fe; filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.8)); transform: translateY(-2px); }
         .btn-fb:hover svg { transform: scale(1.1); }
 
-        .btn-ig {
-            color: #ff416c;
-            border: 1px solid rgba(255, 65, 108, 0.3);
-        }
-        .btn-ig:hover {
-            background: rgba(255, 65, 108, 0.15);
-            border-color: #ff416c;
-            filter: drop-shadow(0 0 8px rgba(255, 65, 108, 0.8));
-            transform: translateY(-2px);
-        }
+        .btn-ig { color: #ff416c; border: 1px solid rgba(255, 65, 108, 0.3); }
+        .btn-ig:hover { background: rgba(255, 65, 108, 0.15); border-color: #ff416c; filter: drop-shadow(0 0 8px rgba(255, 65, 108, 0.8)); transform: translateY(-2px); }
         .btn-ig:hover svg { transform: scale(1.1); }
 
         /* BOTÓN INSTAGRAM DEL AUTOR EN EL SIDEBAR */
@@ -193,18 +177,8 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 65, 108, 0.05);
         }
-        .author-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
-        .author-btn:hover {
-            background: linear-gradient(135deg, rgba(255, 65, 108, 0.25), rgba(161, 85, 255, 0.25));
-            border-color: #a155ff;
-            color: #fff;
-            transform: scale(1.02);
-            filter: drop-shadow(0 0 10px rgba(255, 65, 108, 0.5));
-        }
+        .author-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .author-btn:hover { background: linear-gradient(135deg, rgba(255, 65, 108, 0.25), rgba(161, 85, 255, 0.25)); border-color: #a155ff; color: #fff; transform: scale(1.02); filter: drop-shadow(0 0 10px rgba(255, 65, 108, 0.5)); }
 
         /* MEMBRETE ESCOLAR */
         .colegio-tag {
@@ -243,10 +217,7 @@
             text-transform: uppercase;
             line-height: 1.3;
         }
-        .brand-title:hover {
-            text-shadow: 0 0 10px #00f2fe;
-            border-left-color: #a155ff;
-        }
+        .brand-title:hover { text-shadow: 0 0 10px #00f2fe; border-left-color: #a155ff; }
 
         .seccion-titulo {
             font-size: 0.75rem;
@@ -317,13 +288,13 @@
             transition: color 0.3s ease;
         }
 
-        /* Interfaces dinámicas (Tarjetas) */
+        /* Interfaces dinámicas */
         .anim-content {
             animation: fadeInUp 0.4s ease forwards;
             flex-grow: 1;
         }
 
-        /* Banner Institucional de Inicio */
+        /* Banner Institucional */
         .welcome-banner {
             background: linear-gradient(135deg, rgba(25, 24, 45, 0.85), rgba(6, 5, 12, 0.95));
             border-left: 5px solid #a155ff;
@@ -334,22 +305,10 @@
             border: 1px solid rgba(161, 85, 255, 0.2);
         }
 
-        .welcome-banner p {
-            margin: 0;
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #fff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-        }
+        .welcome-banner p { margin: 0; font-size: 1.1rem; line-height: 1.5; color: #fff; }
+        .welcome-banner span { color: #00f2fe; font-weight: bold; }
 
-        .welcome-banner span {
-            color: #00f2fe;
-            font-weight: bold;
-        }
-
-        /* ==========================================================================
-           BLOQUES DE INICIO EN REPOSO ESTÁTICO
-           ========================================================================== */
+        /* BLOQUES DE INICIO EN PC */
         .menu-bloques {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -372,10 +331,7 @@
             will-change: transform;
         }
 
-        .bloque-card:hover { 
-            transform: translateY(-4px); 
-        }
-
+        .bloque-card:hover { transform: translateY(-4px); }
         .bloque-card h2 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 0; margin-bottom: 12px; }
         .bloque-card p { font-size: 0.8rem; color: #ccc; line-height: 1.5; margin: 0 0 15px 0; text-align: justify; }
 
@@ -394,27 +350,22 @@
             transition: all 0.25s ease;
         }
 
-        /* Tarjeta Azul */
-        .bloque-blue { border-color: rgba(0, 242, 254, 0.3); box-shadow: 0 4px 15px rgba(0, 242, 254, 0.05); }
+        .bloque-blue { border-color: rgba(0, 242, 254, 0.3); }
         .bloque-blue h2 { color: #00f2fe; }
         .bloque-blue .neon-draw-box { border: 2px solid #00f2fe; color: #00f2fe; text-shadow: 0 0 8px rgba(0, 242, 254, 0.5); }
         .bloque-blue:hover { border-color: #00f2fe; box-shadow: 0 0 20px rgba(0, 242, 254, 0.4); background: rgba(25, 24, 45, 0.85); }
 
-        /* Tarjeta Roja */
-        .bloque-red { border-color: rgba(248, 54, 0, 0.3); box-shadow: 0 4px 15px rgba(248, 54, 0, 0.05); }
+        .bloque-red { border-color: rgba(248, 54, 0, 0.3); }
         .bloque-red h2 { color: #f83600; }
         .bloque-red .neon-draw-box { border: 2px solid #f83600; color: #f83600; text-shadow: 0 0 8px rgba(248, 54, 0, 0.5); }
         .bloque-red:hover { border-color: #f83600; box-shadow: 0 0 20px rgba(248, 54, 0, 0.4); background: rgba(25, 24, 45, 0.85); }
 
-        /* Tarjeta Verde */
-        .bloque-green { border-color: rgba(56, 239, 125, 0.3); box-shadow: 0 4px 15px rgba(56, 239, 125, 0.05); }
+        .bloque-green { border-color: rgba(56, 239, 125, 0.3); }
         .bloque-green h2 { color: #38ef7d; }
         .bloque-green .neon-draw-box { border: 2px solid #38ef7d; color: #38ef7d; text-shadow: 0 0 8px rgba(56, 239, 125, 0.5); }
         .bloque-green:hover { border-color: #38ef7d; box-shadow: 0 0 20px rgba(56, 239, 125, 0.4); background: rgba(25, 24, 45, 0.85); }
 
-        /* ==========================================================================
-           CONTENEDOR DE INFORMACIÓN E IMÁGENES REINTEGRADAS
-           ========================================================================== */
+        /* INTERFACES DE INFORMACIÓN */
         .card-info { 
             background: rgba(255, 255, 255, 0.03); 
             padding: 30px; 
@@ -425,36 +376,10 @@
             text-align: justify; 
         }
         
-        /* Contenedor flexible para el texto y la imagen de soporte */
-        .info-layout {
-            display: flex;
-            gap: 25px;
-            align-items: flex-start;
-        }
-
-        .info-text {
-            flex: 1;
-        }
-
-        /* Estilo para las imágenes informativas reintegradas */
-        .info-img {
-            width: 260px;
-            height: auto;
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            background-color: #000;
-            transition: transform 0.3s ease;
-        }
-        .info-img:hover {
-            transform: scale(1.03);
-            border-color: inherit; /* Adopta el color del borde de la sección */
-        }
-
-        @media (max-width: 900px) {
-            .info-layout { flex-direction: column; }
-            .info-img { width: 100%; max-width: 350px; margin: 15px auto 0 auto; display: block; }
-        }
+        .info-layout { display: flex; gap: 25px; align-items: flex-start; }
+        .info-text { flex: 1; }
+        .info-img { width: 260px; height: auto; border-radius: 8px; border: 2px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); background-color: #000; transition: transform 0.3s ease; }
+        .info-img:hover { transform: scale(1.03); border-color: inherit; }
 
         .label-paso { color: #00f2fe; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 15px; letter-spacing: 1px; }
         .download-link { display: inline-block; margin: 15px 12px 0 0; padding: 12px 20px; background: linear-gradient(135deg, #11998e, #38ef7d); color: #000; text-decoration: none; font-weight: bold; border-radius: 8px; transition: all 0.2s ease; }
@@ -464,9 +389,115 @@
 
         /* Pie de página */
         .footer-info { margin-top: 40px; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; gap: 20px; }
-        .footer-logo { width: 80px; height: auto; object-fit: contain; mix-blend-mode: multiply; filter: contrast(1.2) brightness(1.2); transition: transform 0.3s ease; }
-        .footer-logo:hover { transform: scale(1.1) rotate(3deg); }
+        .footer-logo { width: 80px; height: auto; object-fit: contain; mix-blend-mode: multiply; filter: contrast(1.2) brightness(1.2); }
         .footer-text-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; font-size: 0.85rem; color: #888; width: 100%; }
+
+        /* ==========================================================================
+           REGLA EXCLUSIVA PARA CELULARES (DISEÑO HORIZONTAL SLIDER COMPACTO)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            body { padding: 8px; }
+            
+            .splash-title { font-size: 1.7rem; letter-spacing: 1px; }
+            .splash-subtitle { font-size: 0.85rem; }
+
+            /* Quitamos elementos absolutos molestos */
+            .social-container, .colegio-tag { 
+                position: static; 
+                text-align: center; 
+                justify-content: center; 
+                margin: 5px auto 12px auto; 
+            }
+            .colegio-tag { font-size: 0.85rem; }
+
+            /* Estructura vertical del layout para que la información suba */
+            .main-layout { 
+                display: flex;
+                flex-direction: column; 
+                gap: 12px; 
+            }
+
+            /* !!! EL TRUCO MAGNÍFICO DEL MENÚ DESLIZABLE HORIZONTAL !!! */
+            .sidebar {
+                flex-direction: row;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 12px 10px;
+                gap: 8px;
+                border-radius: 12px;
+                /* Oculta la barra de scroll fea en la mayoría de teléfonos */
+                scrollbar-width: none; 
+            }
+            .sidebar::-webkit-scrollbar { display: none; }
+
+            /* El título principal del menú se queda fijo al inicio */
+            .brand-title {
+                display: inline-block;
+                margin-bottom: 0;
+                font-size: 0.85rem;
+                padding: 8px 12px;
+                background: rgba(0, 242, 254, 0.1);
+                border-radius: 6px;
+                border-left: 2px solid #00f2fe;
+            }
+
+            /* Los títulos divisores se vuelven etiquetas pequeñas decorativas */
+            .seccion-titulo {
+                display: inline-block;
+                font-size: 0.65rem;
+                margin: 0;
+                padding: 8px 6px;
+                border-bottom: none;
+                align-self: center;
+                opacity: 0.8;
+            }
+
+            /* Los botones se adaptan para ponerse uno al lado del otro */
+            .nav-btn {
+                display: inline-flex;
+                width: auto;
+                margin-bottom: 0;
+                padding: 8px 14px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+                background: rgba(255, 255, 255, 0.05);
+            }
+            .nav-btn:hover { transform: none; box-shadow: none; }
+
+            /* Botón Instagram del autor dentro de la lista horizontal */
+            .author-btn {
+                display: inline-flex;
+                margin-top: 0;
+                padding: 8px 14px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+
+            /* Área de contenido sube inmediatamente abajo de la barra de botones */
+            .content-area { 
+                padding: 16px 12px; 
+                min-height: auto; 
+                border-radius: 15px;
+            }
+            .main-header { font-size: 1.3rem; text-align: center; }
+            .sub-header { font-size: 0.85rem; text-align: center; margin-bottom: 15px; }
+
+            /* Bloques de la página de inicio apilados */
+            .menu-bloques { grid-template-columns: 1fr; gap: 12px; }
+            .bloque-card { min-height: auto; padding: 15px; }
+            .bloque-card p { font-size: 0.8rem; text-align: left; }
+
+            /* Reajuste de fotos e info interna */
+            .info-layout { flex-direction: column; gap: 12px; }
+            .info-img { width: 100%; max-width: 100%; }
+            .card-info { padding: 15px 12px; font-size: 0.88rem; text-align: left; }
+
+            .download-link { display: block; text-align: center; margin-right: 0; margin-bottom: 8px; }
+
+            /* Footer horizontal */
+            .footer-info { flex-direction: column; text-align: center; gap: 12px; margin-top: 25px; }
+            .footer-text-grid { grid-template-columns: 1fr; gap: 12px; }
+        }
     </style>
 </head>
 <body class="loading">
@@ -499,29 +530,29 @@
     <div class="sidebar">
         <div class="brand-title" onclick="mostrar('inicio')">Soporte Técnico & Ciberseguridad</div>
         
-        <span class="seccion-titulo">💻 INFORMACIÓN DE HARDWARE</span>
-        <button class="nav-btn" onclick="mostrar('cpu')">🧠 Procesador (CPU)</button>
-        <button class="nav-btn" onclick="mostrar('ram')">⚡ Memoria RAM</button>
+        <span class="seccion-titulo">💻 HARDWARE</span>
+        <button class="nav-btn" onclick="mostrar('cpu')">🧠 CPU</button>
+        <button class="nav-btn" onclick="mostrar('ram')">⚡ RAM</button>
         <button class="nav-btn" onclick="mostrar('hdd')">💾 SSD vs HDD</button>
         <button class="nav-btn" onclick="mostrar('placa')">🔌 Placa Base</button>
 
-        <span class="seccion-titulo" style="color: #f83600; border-bottom-color: rgba(248, 54, 0, 0.2);">🛡️ SEGURIDAD DIGITAL</span>
-        <button class="nav-btn" onclick="mostrar('virus')">🦠 Virus y Malware</button>
-        <button class="nav-btn" onclick="mostrar('phishing')">🎣 Phishing/Estafas</button>
-        <button class="nav-btn" onclick="mostrar('alertas')">⚠️ Señales de Alerta</button>
+        <span class="seccion-titulo" style="color: #f83600;">🛡️ SEGURIDAD</span>
+        <button class="nav-btn" onclick="mostrar('virus')">🦠 Malware</button>
+        <button class="nav-btn" onclick="mostrar('phishing')">🎣 Phishing</button>
+        <button class="nav-btn" onclick="mostrar('alertas')">⚠️ Alertas</button>
         <button class="nav-btn" onclick="mostrar('antivirus')">🛡️ Antivirus</button>
         <button class="nav-btn" onclick="mostrar('adblock')">🚫 AdBlockers</button>
 
-        <span class="seccion-titulo" style="color: #38ef7d; border-bottom-color: rgba(56, 239, 125, 0.2);">🛠️ TUTORIALES</span>
-        <button class="nav-btn" onclick="mostrar('limpieza')">🧹 Limpieza Física</button>
-        <button class="nav-btn" onclick="mostrar('calor')">🔥 Calor / Fans</button>
-        <button class="nav-btn" onclick="mostrar('inicio-opt')">🚀 Optimización de Inicio</button>
+        <span class="seccion-titulo" style="color: #38ef7d;">🛠️ TUTORIALES</span>
+        <button class="nav-btn" onclick="mostrar('limpieza')">🧹 Limpieza</button>
+        <button class="nav-btn" onclick="mostrar('calor')">🔥 Calor</button>
+        <button class="nav-btn" onclick="mostrar('inicio-opt')">🚀 Inicio</button>
 
         <a href="https://www.instagram.com/xxanease/" target="_blank" class="author-btn" title="Instagram de Ronnier">
             <svg viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
             </svg>
-            <span>Instagram del Autor</span>
+            <span>Instagram del autor</span>
         </a>
     </div>
 
@@ -665,7 +696,7 @@
                     <div class="info-layout">
                         <div class="info-text">
                             <span class="label-paso">🔌 Conectividad e Infraestructura</span>
-                            La placa base o tarjeta madre representa el cimiento estructural y electrónico donde se conectan de manera directa todos los elementos internos de la PC. Contiene el zócalo o socket destinado a alojar el procesador, las ranuras DIMM para los módulos de memoria y los puertos PCI Express para las tarjetas gráficas dedicadas. Su circuito de regulación de voltaje, conocido como VRM, es el encargado de limpiar y estabilizar la energía enviada desde la fuente hacia el chip principal. Los chipsets modernos determinan la compatibilidad del hardware y la velocidad de los puertos USB y conexiones de red Ethernet locales. Una placa base de calidad ofrece disipación pasiva integrada para evitar sobrecalentamientos peligrosos en los componentes reguladores de energía eléctrica. También aloja el chip de la BIOS o UEFI, software básico que inicializa y diagnostica los errores del computador durante el encendido primario. Es vital elegir un factor de forma compatible con el tamaño del chasis metálico.
+                            La placa base o tarjeta madre representa el cimiento estructural y electrónico donde se conectan de manera directa todos los elementos internos de la PC. Contiene el zócalo o socket destinado a alojar el procesador, las ranuras DIMM para los módulos de memoria y los puertos PCI Express para las tarjetas gráficas dadas. Su circuito de regulación de voltaje, conocido como VRM, es el encargado de limpiar y estabilizar la energía enviada desde la fuente hacia el chip principal. Los chipsets modernos determinan la compatibilidad del hardware y la velocidad de los puertos USB y conexiones de red Ethernet locales. Una placa base de calidad ofrece disipación pasiva integrada para evitar sobrecalentamientos peligrosos en los componentes reguladores de energía eléctrica. También aloja el chip de la BIOS o UEFI, software básico que inicializa y diagnostica los errores del computador durante el encendido primario. Es vital elegir un factor de forma compatible con el tamaño del chasis metálico.
                         </div>
                         <img class="info-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" alt="Tarjeta Madre">
                     </div>
@@ -716,7 +747,7 @@
                 </div>`;
         }
         else if (tema === 'antivirus') {
-            subTitle.innerText = "Security Digital / Herramientas";
+            subTitle.innerText = "Seguridad Digital / Herramientas";
             subTitle.style.color = "#f83600";
             html += `
                 <div class="card-info" style="border-left-color: #f83600">
