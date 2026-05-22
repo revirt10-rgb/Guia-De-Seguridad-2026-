@@ -51,15 +51,8 @@
         }
 
         /* ==========================================================================
-           ANIMACIONES CSS (ULTRA OPTIMIZADAS)
+           ANIMACIONES CSS OPTIMIZADAS
            ========================================================================== */
-        /* Esta animación es la que hace mover el degradado neón infinitamente */
-        @keyframes animarFondoNeon {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         @keyframes splashNeon {
             0%, 18%, 22%, 25%, 53%, 57%, 100% {
                 text-shadow: 0 0 10px rgba(0, 242, 254, 0.8), 0 0 20px rgba(0, 242, 254, 0.5), 0 0 40px rgba(0, 242, 254, 0.3);
@@ -82,21 +75,8 @@
             20%, 24%, 55% { text-shadow: none; }
         }
 
-        @keyframes pulseBlue {
-            0%, 100% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.2); border-color: #00f2fe; }
-            50% { box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); border-color: #a155ff; }
-        }
-        @keyframes pulseRed {
-            0%, 100% { box-shadow: 0 0 15px rgba(248, 54, 0, 0.2); border-color: #f83600; }
-            50% { box-shadow: 0 0 25px rgba(248, 54, 0, 0.6); border-color: #f83600; }
-        }
-        @keyframes pulseGreen {
-            0%, 100% { box-shadow: 0 0 15px rgba(56, 239, 125, 0.2); border-color: #38ef7d; }
-            50% { box-shadow: 0 0 25px rgba(56, 239, 125, 0.6); border-color: #38ef7d; }
-        }
-
         /* ==========================================================================
-           ESTILOS BASE
+           ESTILOS BASE Y FONDO ESTÁTICO
            ========================================================================== */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -107,11 +87,23 @@
             align-items: flex-start;
             min-height: 100vh;
             color: white;
-            
-            /* FONDO NEÓN DINÁMICO EN MOVIMIENTO CONSTANTE */
-            background: linear-gradient(-45deg, #0a0612, #12092b, #041924, #180933, #05141c);
-            background-size: 400% 400%; /* Obligatorio para que la animación tenga espacio para moverse */
-            animation: animarFondoNeon 12s ease infinite; /* Cambia los colores de forma fluida cada 12 segundos */
+            background-color: #050409;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 15% 25%, rgba(0, 242, 254, 0.08), transparent 35%),
+                        radial-gradient(circle at 85% 75%, rgba(161, 85, 255, 0.1), transparent 40%),
+                        radial-gradient(circle at 50% 50%, rgba(4, 25, 36, 0.2), transparent 50%);
+            filter: blur(40px);
+            z-index: -1;
         }
 
         .main-layout {
@@ -129,14 +121,114 @@
             opacity: 1;
         }
 
+        /* CONTENEDOR DE REDES CON LOGOS EN SVG */
+        .social-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(13, 12, 22, 0.8);
+            transition: all 0.25s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.25s ease;
+        }
+
+        .btn-fb {
+            color: #00f2fe;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+        }
+        .btn-fb:hover {
+            background: rgba(0, 242, 254, 0.15);
+            border-color: #00f2fe;
+            filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.8));
+            transform: translateY(-2px);
+        }
+        .btn-fb:hover svg { transform: scale(1.1); }
+
+        .btn-ig {
+            color: #ff416c;
+            border: 1px solid rgba(255, 65, 108, 0.3);
+        }
+        .btn-ig:hover {
+            background: rgba(255, 65, 108, 0.15);
+            border-color: #ff416c;
+            filter: drop-shadow(0 0 8px rgba(255, 65, 108, 0.8));
+            transform: translateY(-2px);
+        }
+        .btn-ig:hover svg { transform: scale(1.1); }
+
+        /* BOTÓN INSTAGRAM DEL AUTOR EN EL SIDEBAR */
+        .author-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 25px;
+            padding: 12px 15px;
+            background: linear-gradient(135deg, rgba(255, 65, 108, 0.1), rgba(161, 85, 255, 0.1));
+            border: 1px solid rgba(255, 65, 108, 0.3);
+            border-radius: 10px;
+            color: #ff416c;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.05);
+        }
+        .author-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        .author-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 65, 108, 0.25), rgba(161, 85, 255, 0.25));
+            border-color: #a155ff;
+            color: #fff;
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 10px rgba(255, 65, 108, 0.5));
+        }
+
+        /* MEMBRETE ESCOLAR */
+        .colegio-tag {
+            position: absolute;
+            top: 56px;
+            right: 10px;
+            text-align: right;
+            color: #00f2fe;
+            font-weight: bold;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            max-width: 300px;
+        }
+
         /* Sidebar */
         .sidebar {
-            background: rgba(13, 12, 22, 0.85); /* Bajado un poco para que se trasluzca el neón de fondo */
+            background: rgba(13, 12, 22, 0.85);
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.7);
-            border: 1px solid rgba(0, 242, 254, 0.15); /* Añadido borde neón sutil */
-            backdrop-filter: blur(10px); /* Efecto vidrio esmerilado */
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
         }
 
         .brand-title {
@@ -196,7 +288,7 @@
 
         /* Área de Contenido */
         .content-area {
-            background: rgba(18, 17, 32, 0.82); /* Bajado para que el neón se aprecie en los bordes */
+            background: rgba(18, 17, 32, 0.82);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.8);
@@ -205,7 +297,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            backdrop-filter: blur(10px); /* Efecto vidrio para difuminar el fondo que se mueve */
+            backdrop-filter: blur(10px);
         }
 
         .main-header {
@@ -223,18 +315,6 @@
             margin-bottom: 30px;
             font-weight: 600;
             transition: color 0.3s ease;
-        }
-
-        .colegio-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            text-align: right;
-            color: #00f2fe;
-            font-weight: bold;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            max-width: 300px;
         }
 
         /* Interfaces dinámicas (Tarjetas) */
@@ -267,6 +347,9 @@
             font-weight: bold;
         }
 
+        /* ==========================================================================
+           BLOQUES DE INICIO EN REPOSO ESTÁTICO
+           ========================================================================== */
         .menu-bloques {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -285,10 +368,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+            will-change: transform;
         }
 
-        .bloque-card:hover { transform: translateY(-5px); }
+        .bloque-card:hover { 
+            transform: translateY(-4px); 
+        }
+
         .bloque-card h2 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 0; margin-bottom: 12px; }
         .bloque-card p { font-size: 0.8rem; color: #ccc; line-height: 1.5; margin: 0 0 15px 0; text-align: justify; }
 
@@ -304,22 +391,71 @@
             font-size: 2rem;
             font-weight: bold;
             box-sizing: border-box;
+            transition: all 0.25s ease;
         }
 
-        /* Colores dinámicos */
-        .bloque-blue { border-color: #00f2fe; animation: pulseBlue 4s infinite ease-in-out; }
+        /* Tarjeta Azul */
+        .bloque-blue { border-color: rgba(0, 242, 254, 0.3); box-shadow: 0 4px 15px rgba(0, 242, 254, 0.05); }
         .bloque-blue h2 { color: #00f2fe; }
-        .bloque-blue .neon-draw-box { border: 3px solid #00f2fe; color: #00f2fe; text-shadow: 0 0 10px rgba(0, 242, 254, 0.7); box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.3); }
+        .bloque-blue .neon-draw-box { border: 2px solid #00f2fe; color: #00f2fe; text-shadow: 0 0 8px rgba(0, 242, 254, 0.5); }
+        .bloque-blue:hover { border-color: #00f2fe; box-shadow: 0 0 20px rgba(0, 242, 254, 0.4); background: rgba(25, 24, 45, 0.85); }
 
-        .bloque-red { border-color: #f83600; animation: pulseRed 4s infinite ease-in-out 1s; }
+        /* Tarjeta Roja */
+        .bloque-red { border-color: rgba(248, 54, 0, 0.3); box-shadow: 0 4px 15px rgba(248, 54, 0, 0.05); }
         .bloque-red h2 { color: #f83600; }
-        .bloque-red .neon-draw-box { border: 3px solid #f83600; color: #f83600; text-shadow: 0 0 10px rgba(248, 54, 0, 0.7); box-shadow: inset 0 0 10px rgba(248, 54, 0, 0.3); }
+        .bloque-red .neon-draw-box { border: 2px solid #f83600; color: #f83600; text-shadow: 0 0 8px rgba(248, 54, 0, 0.5); }
+        .bloque-red:hover { border-color: #f83600; box-shadow: 0 0 20px rgba(248, 54, 0, 0.4); background: rgba(25, 24, 45, 0.85); }
 
-        .bloque-green { border-color: #38ef7d; animation: pulseGreen 4s infinite ease-in-out 2s; }
+        /* Tarjeta Verde */
+        .bloque-green { border-color: rgba(56, 239, 125, 0.3); box-shadow: 0 4px 15px rgba(56, 239, 125, 0.05); }
         .bloque-green h2 { color: #38ef7d; }
-        .bloque-green .neon-draw-box { border: 3px solid #38ef7d; color: #38ef7d; text-shadow: 0 0 10px rgba(56, 239, 125, 0.7); box-shadow: inset 0 0 10px rgba(56, 239, 125, 0.3); }
+        .bloque-green .neon-draw-box { border: 2px solid #38ef7d; color: #38ef7d; text-shadow: 0 0 8px rgba(56, 239, 125, 0.5); }
+        .bloque-green:hover { border-color: #38ef7d; box-shadow: 0 0 20px rgba(56, 239, 125, 0.4); background: rgba(25, 24, 45, 0.85); }
 
-        .card-info { background: rgba(255, 255, 255, 0.03); padding: 30px; border-radius: 12px; border-left: 5px solid #00f2fe; line-height: 1.6; font-size: 0.95rem; text-align: justify; }
+        /* ==========================================================================
+           CONTENEDOR DE INFORMACIÓN E IMÁGENES REINTEGRADAS
+           ========================================================================== */
+        .card-info { 
+            background: rgba(255, 255, 255, 0.03); 
+            padding: 30px; 
+            border-radius: 12px; 
+            border-left: 5px solid #00f2fe; 
+            line-height: 1.6; 
+            font-size: 0.95rem; 
+            text-align: justify; 
+        }
+        
+        /* Contenedor flexible para el texto y la imagen de soporte */
+        .info-layout {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        /* Estilo para las imágenes informativas reintegradas */
+        .info-img {
+            width: 260px;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            background-color: #000;
+            transition: transform 0.3s ease;
+        }
+        .info-img:hover {
+            transform: scale(1.03);
+            border-color: inherit; /* Adopta el color del borde de la sección */
+        }
+
+        @media (max-width: 900px) {
+            .info-layout { flex-direction: column; }
+            .info-img { width: 100%; max-width: 350px; margin: 15px auto 0 auto; display: block; }
+        }
+
         .label-paso { color: #00f2fe; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 15px; letter-spacing: 1px; }
         .download-link { display: inline-block; margin: 15px 12px 0 0; padding: 12px 20px; background: linear-gradient(135deg, #11998e, #38ef7d); color: #000; text-decoration: none; font-weight: bold; border-radius: 8px; transition: all 0.2s ease; }
         .download-link:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(56, 239, 125, 0.5); }
@@ -342,6 +478,19 @@
 
 <div class="main-layout">
     
+    <div class="social-container">
+        <a href="https://www.facebook.com/ColegioEvangelicoSW" target="_blank" class="social-btn btn-fb" title="Facebook del Colegio">
+            <svg viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+        </a>
+        <a href="https://www.instagram.com/stories/highlights/18050771048338660/" target="_blank" class="social-btn btn-ig" title="Instagram del Colegio">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+        </a>
+    </div>
+
     <div class="colegio-tag">
         Colegio Evangélico Sadie De Walmsley<br>
         2 año "A"
@@ -367,6 +516,13 @@
         <button class="nav-btn" onclick="mostrar('limpieza')">🧹 Limpieza Física</button>
         <button class="nav-btn" onclick="mostrar('calor')">🔥 Calor / Fans</button>
         <button class="nav-btn" onclick="mostrar('inicio-opt')">🚀 Optimización de Inicio</button>
+
+        <a href="https://www.instagram.com/xxanease/" target="_blank" class="author-btn" title="Instagram de Ronnier">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+            <span>Instagram del Autor</span>
+        </a>
     </div>
 
     <div class="content-area">
@@ -387,7 +543,7 @@
                 </div>
                 <div>
                     <strong style="color: #aaa;">COLABORADORES:</strong><br>
-                    Mariano, Skarlet, Yackselis, Sebastian
+                    Mariano, Yackselis, Sebastian
                 </div>
             </div>
         </div>
@@ -436,7 +592,7 @@
                     <div class="bloque-card bloque-red" onclick="mostrar('virus')">
                         <div>
                             <h2>SEGURIDAD DIGITAL</h2>
-                            <p>Protege de manera definitiva tu infraestructura contra ataques maliciosos externos. Aprende a identificar scripts destructivos y gusanos ocultos en descargas sospechosas de internet. En este apartado hablaremos detalladamente de las tácticas de ingeniería social como la suplantación de identidad en páginas web falsas clonadas. Conocerás las señales claras que indican que un sistema operativo ha sido infectado. Te enseñaremos a elegir e instalar un antivirus potente de última generación y a configurar extensiones avanzadas de bloqueo de scripts invasivos en la red web.</p>
+                            <p>Protege de manera definitiva tu infraestructura contra ataques maliciosos externos. Aprende a identificar scripts destructivos y gusanos ocultos en descargas sospechosas de internet. En este apartado hablaremos detalladamente de las tácticas de ingeniería social como la suplantación de identidad en páginas web falsas clonadas. Conocerás las señales claras que indican que un sistema operativo han sido infectado. Te enseñaremos a elegir e instalar un antivirus potente de última generación y a configurar extensiones avanzadas de bloqueo de scripts invasivos en la red web.</p>
                         </div>
                         <div class="neon-draw-box">
                             🛡️ <span style="font-size:0.75rem; display:block; margin-top:5px; font-weight:normal;">SEGURIDAD</span>
@@ -464,8 +620,13 @@
             subTitle.style.color = "#00f2fe";
             html += `
                 <div class="card-info">
-                    <span class="label-paso">🧠 Cerebro del Sistema</span>
-                    La Unidad Central de Procesamiento (CPU) es el componente maestro de cualquier computadora, encargado de interpretar, procesar y ejecutar absolutamente todas las secuencias de comandos y operaciones lógicas del sistema operativo. Su rendimiento global depende de factores clave como la frecuencia de reloj medida en gigahercios (GHz) y la cantidad de núcleos físicos disponibles. Un mayor número de núcleos permite realizar un multitasking real avanzado sin caídas de frames ni congelamientos molestos. El procesador coordina la comunicación de datos entre el almacenamiento principal y los periféricos de entrada y salida de información. Además, los procesadores modernos integran memorias caché ultra rápidas de nivel uno, dos y tres para reducir los tiempos de espera del hardware. Comprender su funcionamiento térmico es vital, ya que bajo cargas pesadas de trabajo como videojuegos exigentes o renderizado de vídeo, genera altas temperaturas que deben ser disipadas. Un CPU balanceado evita los cuellos de botella en la tarjeta gráfica del computador.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">🧠 Cerebro del Sistema</span>
+                            La Unidad Central de Procesamiento (CPU) es el componente maestro de cualquier computadora, encargado de interpretar, procesar y ejecutar absolutamente todas las secuencias de comandos y operaciones lógicas del sistema operativo. Su rendimiento global depende de factores clave como la frecuencia de reloj medida en gigahercios (GHz) y la cantidad de núcleos físicos disponibles. Un mayor número de núcleos permite realizar un multitasking real avanzado sin caídas de frames ni congelamientos molestos. El procesador coordina la comunicación de datos entre el almacenamiento principal y los periféricos de entrada y salida de información. Además, los procesadores modernos integran memorias caché ultra rápidas de nivel uno, dos y tres para reducir los tiempos de espera del hardware. Comprender su funcionamiento térmico es vital, ya que bajo cargas pesadas de trabajo como videojuegos exigentes o renderizado de vídeo, genera altas temperaturas que deben ser disipadas. Un CPU balanceado evita los cuellos de botella en la tarjeta gráfica del computador.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1591405351990-4726e331f141?auto=format&fit=crop&w=500&q=80" alt="Procesador CPU">
+                    </div>
                 </div>`;
         }
         else if (tema === 'ram') {
@@ -473,8 +634,13 @@
             subTitle.style.color = "#00f2fe";
             html += `
                 <div class="card-info">
-                    <span class="label-paso">⚡ Memoria de Acceso Aleatorio</span>
-                    La Memoria de Acceso Aleatorio (RAM) sirve como un espacio de almacenamiento temporal de velocidad extrema utilizado por el sistema operativo para guardar los archivos de los programas activos. Al contrario que los discos duros, la RAM es una memoria volátil, lo que significa que pierde toda su información grabada en cuanto el computador se apaga por completo. Contar con una capacidad óptima, como ocho o dieciséis gigabytes, permite ejecutar de forma fluida juegos complejos y navegadores web pesados en paralelo. Las velocidades de transferencia de la RAM se miden en megahercios (MHz) y varían según la generación tecnológica como DDR4 o DDR5. Cuando el sistema agota la memoria física disponible, se ve obligado a usar el almacenamiento secundario como memoria virtual, ralentizando la máquina. Una latencia baja en los módulos garantiza una respuesta instantánea a los comandos del usuario de forma inmediata. El diseño de doble canal mejora enormemente el ancho de banda del hardware gráfico integrado.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">⚡ Memoria de Acceso Aleatorio</span>
+                            La Memoria de Acceso Aleatorio (RAM) sirve como un espacio de almacenamiento temporal de velocidad extrema utilizado por el sistema operativo para guardar los archivos de los programas activos. Al contrario que los discos duros, la RAM es una memoria volátil, lo que significa que pierde toda su información grabada en cuanto el computador se apaga por completo. Contar con una capacidad óptima, como ocho o dieciséis gigabytes, permite ejecutar de forma fluida juegos complejos y navegadores web pesados en paralelo. Las velocidades de transferencia de la RAM se miden en megahercios (MHz) y varían según la generación tecnológica como DDR4 o DDR5. Cuando el sistema agota la memoria física disponible, se ve obligado a usar el almacenamiento secundario como memoria virtual, ralentizando la máquina. Una latencia baja en los módulos garantiza una respuesta instantánea a los comandos del usuario de forma inmediata. El diseño de doble canal mejora enormemente el ancho de banda del hardware gráfico integrado.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80" alt="Memoria RAM">
+                    </div>
                 </div>`;
         }
         else if (tema === 'hdd') {
@@ -482,8 +648,13 @@
             subTitle.style.color = "#00f2fe";
             html += `
                 <div class="card-info">
-                    <span class="label-paso">💾 Discos de Estado Sólido y Mecánicos</span>
-                    Las unidades de almacenamiento masivo determinan la velocidad general con la que abren las aplicaciones y carga el sistema de la computadora. Los discos duros mecánicos tradicionales (HDD) utilizan platos metálicos giratorios combinados con un cabezal magnético lento para leer los datos del usuario. Por otro lado, las modernas unidades de estado sólido (SSD) son totalmente electrónicas y basadas en memorias flash estables sin partes móviles internas. Un SSD SATA o un NVMe M.2 ofrece velocidades de lectura que superan por mucho el rendimiento de cualquier disco mecánico convencional. Reemplazar un HDD viejo por un sólido hace que el arranque de Windows pase de minutos a escasos segundos de espera. Los SSD consumen menos energía eléctrica, generan cero ruido acústico y son altamente resistentes a los impactos accidentales externos. Mantener los juegos instalados en un disco de estado sólido elimina por completo las texturas tardías durante partidas competitivas en línea.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">💾 Discos de Estado Sólido y Mecánicos</span>
+                            Las unidades de almacenamiento masivo determinan la velocidad general con la que abren las aplicaciones y carga el sistema de la computadora. Los discos duros mecánicos tradicionales (HDD) utilizan platos metálicos giratorios combinados con un cabezal magnético lento para leer los datos del usuario. Por otro lado, las modernas unidades de estado sólido (SSD) son totalmente electrónicas y basadas en memorias flash estables sin partes móviles internas. Un SSD SATA o un NVMe M.2 ofrece velocidades de lectura que superan por mucho el rendimiento de cualquier disco mecánico convencional. Reemplazar un HDD viejo por un sólido hace que el arranque de Windows pase de minutos a escasos segundos de espera. Los SSD consumen menos energía eléctrica, generan cero ruido acústico y son altamente resistentes a los impactos accidentales externos. Mantener los juegos instalados en un disco de estado sólido elimina por completo las texturas tardías durante partidas competitivas en línea.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=500&q=80" alt="SSD Almacenamiento">
+                    </div>
                 </div>`;
         }
         else if (tema === 'placa') {
@@ -491,8 +662,13 @@
             subTitle.style.color = "#00f2fe";
             html += `
                 <div class="card-info">
-                    <span class="label-paso">🔌 Conectividad e Infraestructura</span>
-                    La placa base o tarjeta madre representa el cimiento estructural y electrónico donde se conectan de manera directa todos los elementos internos de la PC. Contiene el zócalo o socket destinado a alojar el procesador, las ranuras DIMM para los módulos de memoria y los puertos PCI Express para las tarjetas gráficas dedicadas. Su circuito de regulación de voltaje, conocido como VRM, es el encargado de limpiar y estabilizar la energía enviada desde la fuente hacia el chip principal. Los chipsets modernos determinan la compatibilidad del hardware y la velocidad de los puertos USB y conexiones de red Ethernet locales. Una placa base de calidad ofrece disipación pasiva integrada para evitar sobrecalentamientos peligrosos en los componentes reguladores de energía eléctrica. También aloja el chip de la BIOS o UEFI, software básico que inicializa y diagnostica los errores del computador durante el encendido primario. Es vital elegir un factor de forma compatible con el tamaño del chasis metálico.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">🔌 Conectividad e Infraestructura</span>
+                            La placa base o tarjeta madre representa el cimiento estructural y electrónico donde se conectan de manera directa todos los elementos internos de la PC. Contiene el zócalo o socket destinado a alojar el procesador, las ranuras DIMM para los módulos de memoria y los puertos PCI Express para las tarjetas gráficas dedicadas. Su circuito de regulación de voltaje, conocido como VRM, es el encargado de limpiar y estabilizar la energía enviada desde la fuente hacia el chip principal. Los chipsets modernos determinan la compatibilidad del hardware y la velocidad de los puertos USB y conexiones de red Ethernet locales. Una placa base de calidad ofrece disipación pasiva integrada para evitar sobrecalentamientos peligrosos en los componentes reguladores de energía eléctrica. También aloja el chip de la BIOS o UEFI, software básico que inicializa y diagnostica los errores del computador durante el encendido primario. Es vital elegir un factor de forma compatible con el tamaño del chasis metálico.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" alt="Tarjeta Madre">
+                    </div>
                 </div>`;
         }
 
@@ -502,8 +678,13 @@
             subTitle.style.color = "#f83600";
             html += `
                 <div class="card-info" style="border-left-color: #f83600">
-                    <span class="label-paso">🦠 Malware Informático</span>
-                    El malware engloba a todo tipo de código dañino diseñado maliciosamente para infiltrarse de forma encubierta en un sistema operativo informático. Entre las categorías más peligrosas encontramos los troyanos, que simulan ser programas legítimos, y los temidos ransomware, que bloquean archivos personales exigiendo dinero. Los gusanos informáticos tienen la capacidad destructiva de autoreplicarse de forma masiva a través de las redes locales infectando otros equipos conectados. La vía principal de contagio ocurre al descargar instaladores modificados de páginas web de dudosa reputación o software pirata con cracks infectados. El software espía o spyware recolecta silenciosamente historiales de navegación web y contraseñas bancarias sin levantar sospechas en el administrador del sistema. Un virus activo consume recursos del procesador en segundo plano, causando caídas drásticas de velocidad y pantallas azules inesperadas. Protegerse requiere evitar abrir enlaces acortados de origen desconocido.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">🦠 Malware Informático</span>
+                            El malware engloba a todo tipo de código dañino diseñado maliciosamente para infiltrarse de forma encubierta en un sistema operativo informático. Entre las categorías más peligrosas encontramos los troyanos, que simulan ser programas legítimos, y los temidos ransomware, que bloquean archivos personales exigiendo dinero. Los gusanos informáticos tienen la capacidad destructiva de autoreplicarse de forma masiva a través de las redes locales infectando otros equipos conectados. La vía principal de contagio ocurre al descargar instaladores modificados de páginas web de dudosa reputación o software pirata con cracks infectados. El software espía o spyware recolecta silenciosamente historiales de navegación web y contraseñas bancarias sin levantar sospechas en el administrador del sistema. Un virus activo consume recursos del procesador en segundo plano, causando caídas drásticas de velocidad y pantallas azules inesperadas. Protegerse requiere evitar abrir enlaces acortados de origen desconocido.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=500&q=80" alt="Virus Cibernetico" style="border-color: rgba(248, 54, 0, 0.2)">
+                    </div>
                 </div>`;
         }
         else if (tema === 'phishing') {
@@ -511,8 +692,13 @@
             subTitle.style.color = "#f83600";
             html += `
                 <div class="card-info" style="border-left-color: #f83600">
-                    <span class="label-paso">🎣 Suplantación de Identidad</span>
-                    El phishing es uno de los ataques de ingeniería social más extendidos a nivel global, enfocado en engañar la psicología del usuario final de internet. Los ciberdelincuentes diseñan correos electrónicos y mensajes de texto falsos que imitan perfectamente la identidad corporativa de bancos o redes sociales conocidas. El mensaje suele incluir alarmas falsas sobre bloqueos de cuentas bancarias urgentes para presionar al usuario a tomar decisiones rápidas sin pensar. Al hacer clic, la víctima es redirigida hacia una página web clonada idéntica a la original donde introduce sus contraseñas privadas. Estas credenciales de acceso son capturadas al instante por el atacante para cometer robos financieros o usurpación de datos personales. Para mitigar esta amenaza, es indispensable verificar detalladamente la URL oficial del sitio web en la barra de direcciones del navegador. Las empresas legítimas nunca solicitan códigos de seguridad confidenciales a través de correos masivos no verificados.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">🎣 Suplantación de Identidad</span>
+                            El phishing es uno de los ataques de ingeniería social más extendidos a nivel global, enfocado en engañar la psicología del usuario final de internet. Los ciberdelincuentes diseñan correos electrónicos y mensajes de texto falsos que imitan perfectamente la identidad corporativa de bancos o redes sociales conocidas. El mensaje suele incluir alarmas falsas sobre bloqueos de cuentas bancarias urgentes para presionar al usuario a tomar decisiones rápidas sin pensar. Al hacer clic, la víctima es redirigida hacia una página web clonada idéntica a la original donde introduce sus contraseñas privadas. Estas credenciales de acceso son capturadas al instante por el atacante para cometer robos financieros o usurpación de datos personales. Para mitigar esta amenaza, es indispensable verificar detalladamente la URL oficial del sitio web en la barra de direcciones del navegador. Las empresas legítimas nunca solicitan códigos de seguridad confidenciales a través de correos masivos no verificados.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80" alt="Phishing Alerta" style="border-color: rgba(248, 54, 0, 0.2)">
+                    </div>
                 </div>`;
         }
         else if (tema === 'alertas') {
@@ -520,19 +706,29 @@
             subTitle.style.color = "#f83600";
             html += `
                 <div class="card-info" style="border-left-color: #f83600">
-                    <span class="label-paso">⚠️ Síntomas de Infección</span>
-                    Reconocer a tiempo las señales anómalas de un sistema comprometido es crucial para detener la pérdida de información confidencial dentro del computador. Una de las alertas más evidentes es la ralentización extrema e inexplicable de la PC al abrir carpetas simples del escritorio. La aparición repentina de barras de herramientas extrañas o extensiones no deseadas en el navegador web denota una clara infección activa. Si notas que tu motor de búsqueda habitual cambia de Google a portales desconocidos llenos de publicidad invasiva, estás ante un secuestrador de navegador. Las ventanas emergentes o pop-ups publicitarios que saltan incluso sin estar navegando en internet son síntomas inequívocos de adware malicioso instalado. Otro peligro silencioso es notar que el ventilador del procesador gira al máximo de revoluciones de manera constante por culpa de scripts mineros ocultos. El bloqueo de funciones básicas como el administrador de tareas confirma que el malware ha tomado el control lógico.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">⚠️ Síntomas de Infección</span>
+                            Reconocer a tiempo las señales anómalas de un sistema comprometido es crucial para detener la pérdida de información confidencial dentro del computador. Una de las alertas más evidentes es la ralentización extrema e inexplicable de la PC al abrir carpetas simples del escritorio. La aparición repentina de barras de herramientas extrañas o extensiones no deseadas en el navegador web denota una clara infección activa. Si notas que tu motor de búsqueda habitual cambia de Google a portales desconocidos llenos de publicidad invasiva, estás ante un secuestrador de navegador. Las ventanas emergentes o pop-ups publicitarios que saltan incluso sin estar navegando en internet son síntomas inequívocs de adware malicioso instalado. Otro peligro silencioso es notar que el ventilador del procesador gira al máximo de revoluciones de manera constante por culpa de scripts mineros ocultos. El bloqueo de funciones básicas como el administrador de tareas confirma que el malware ha tomado el control lógico.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1624969862644-791f3dc98927?auto=format&fit=crop&w=500&q=80" alt="PC Infectada" style="border-color: rgba(248, 54, 0, 0.2)">
+                    </div>
                 </div>`;
         }
         else if (tema === 'antivirus') {
-            subTitle.innerText = "Seguridad Digital / Herramientas";
+            subTitle.innerText = "Security Digital / Herramientas";
             subTitle.style.color = "#f83600";
             html += `
                 <div class="card-info" style="border-left-color: #f83600">
-                    <span class="label-paso">🛡️ Software de Protección</span>
-                    Las aplicaciones antivirus son la primera línea de defensa interactiva para bloquear y neutralizar archivos infectados antes de que dañen el sistema. Funcionan escaneando constantemente el disco en busca de firmas digitales asociadas a virus conocidos en bases de datos globales actualizadas. Los antivirus modernos incorporan avanzados motores heurísticos capaces de detectar conductas sospechosas de programas nuevos que no están registrados en la red. Mantener el escudo de protección en tiempo real activado previene la ejecución de scripts maliciosos durante descargas pesadas cotidianas. Se recomienda realizar análisis profundos completos de los discos duros al menos una vez por semana para asegurar la limpieza del hardware informático. Windows Defender viene integrado de fábrica y ofrece un rendimiento excelente sin consumir demasiada memoria de acceso aleatorio. Utilizar herramientas adicionales seguras permite eliminar rastros persistentes imposibles de borrar de forma manual.<br><br>
-                    <a href="https://www.avast.com/es-es/free-antivirus-download" target="_blank" class="download-link">Descargar Avast</a> 
-                    <a href="https://www.bitdefender.es/solutions/free.html" target="_blank" class="download-link">Descargar Bitdefender</a>
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">🛡️ Software de Protección</span>
+                            Las aplicaciones antivirus son la primera línea de defensa interactiva para bloquear y neutralizar archivos infectados antes de que dañen el sistema. Funcionan escaneando constantemente el disco en busca de firmas digitales asociadas a virus conocidos en bases de datos globales actualizadas. Los antivirus modernos incorporan avanzados motores heurísticos capaces de detectar conductas sospechosas de programas nuevos que no están registrados en la red. Mantener el escudo de protección en tiempo real activado previene la ejecución de scripts maliciosos durante descargas pesadas cotidianas. Se recomienda realizar análisis profundos completos de los discos duros al menos una vez por semana para asegurar la limpieza del hardware informático. Windows Defender viene integrado de fábrica y ofrece un rendimiento excelente sin consumir demasiada memoria de acceso aleatorio. Utilizar herramientas adicionales seguras permite eliminar rastros persistentes imposibles de borrar de forma manual.<br><br>
+                            <a href="https://www.avast.com/es-es/free-antivirus-download" target="_blank" class="download-link">Descargar Avast</a> 
+                            <a href="https://www.bitdefender.es/solutions/free.html" target="_blank" class="download-link">Descargar Bitdefender</a>
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=500&q=80" alt="Escudo Antivirus" style="border-color: rgba(248, 54, 0, 0.2)">
+                    </div>
                 </div>`;
         }
         else if (tema === 'adblock') {
@@ -540,9 +736,14 @@
             subTitle.style.color = "#f83600";
             html += `
                 <div class="card-info" style="border-left-color: #f83600">
-                    <span class="label-paso">🚫 Bloqueo de Scripts</span>
-                    Los bloqueadores de contenido y extensiones publicitarias son herramientas vitales que mejoran la seguridad y privacidad al navegar por la red mundial. Muchos sitios web maliciosos inyectan anuncios invisibles maliciosos capaces de descargar virus automáticamente mediante técnicas conocidas como malvertising. Al implementar un bloqueador eficiente, se detiene la carga de scripts de rastreo que recolectan información privada del comportamiento del usuario en línea. Esto no solo eleva la seguridad digital general del equipo, sino que optimiza drásticamente el consumo de datos de internet doméstico. Las páginas web cargan hasta tres veces más rápido al no tener que procesar videos publicitarios ni banners animados pesados en segundo plano. Herramientas de código abierto como uBlock Origin ofrecen una protección limpia y ligera sin vender datos a terceros. Es una extensión indispensable para evitar redirecciones automáticas hacia portales de apuestas o estafas financieras.<br><br>
-                    <a href="https://ublockorigin.com/" target="_blank" class="download-link">Instalar uBlock Origin</a>
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">🚫 Bloqueo de Scripts</span>
+                            Los bloqueadores de contenido y extensiones publicitarias son herramientas vitales que mejoran la seguridad y privacidad al navegar por la red mundial. Muchos sitios web maliciosos inyectan anuncios invisibles maliciosos capaces de descargar virus automáticamente mediante técnicas conocidas como malvertising. Al implementar un bloqueador eficiente, se detiene la carga de scripts de rastreo que recolectan información privada del comportamiento del usuario en línea. Esto no solo eleva la seguridad digital general del equipo, sino que optimiza drásticamente el consumo de datos de internet doméstico. Las páginas web cargan hasta tres veces más rápido al no tener que procesar videos publicitarios ni banners animados pesados en segundo plano. Herramientas de código abierto como uBlock Origin ofrecen una protección limpia y ligera sin vender datos a terceros. Es una extensión indispensable para evitar redirecciones automáticas hacia portales de apuestas o estafas financieras.<br><br>
+                            <a href="https://ublockorigin.com/" target="_blank" class="download-link">Instalar uBlock Origin</a>
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1432889490240-84df33d47091?auto=format&fit=crop&w=500&q=80" alt="Bloqueador Publicidad" style="border-color: rgba(248, 54, 0, 0.2)">
+                    </div>
                 </div>`;
         }
 
@@ -552,8 +753,13 @@
             subTitle.style.color = "#38ef7d";
             html += `
                 <div class="card-info" style="border-left-color: #38ef7d">
-                    <span class="label-paso">🧹 Mantenimiento Físico</span>
-                    El mantenimiento físico preventivo del hardware es fundamental para asegurar el funcionamiento óptimo de las computadoras a largo plazo. El polvo ambiental suspendido ingresa constantemente por las rejillas de ventilación, acumulándose en capas densas sobre los componentes electrónicos críticos de la placa. Esta suciedad actúa como una manta térmica aislante que impide la correcta refrigeración de los circuitos impresos del procesador y las memorias. Para realizar una limpieza segura, es obligatorio apagar el equipo y desconectar el cable de alimentación eléctrica del tomacorriente de la pared. Utilizar ráfagas cortas de aire comprimido permite remover las partículas de polvo incrustadas en los rincones de difícil acceso físico. Es crucial sostener firmemente las aspas de los ventiladores con un dedo para evitar daños por giros inducidos involuntarios peligrosos. Jamás se deben usar paños húmedos o químicos abrasivos directamente sobre los circuitos integrados de silicio expuestos.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">🧹 Mantenimiento Físico</span>
+                            El mantenimiento físico preventivo del hardware es fundamental para asegurar el funcionamiento óptimo de las computadoras a largo plazo. El polvo ambiental suspendido ingresa constantemente por las rejillas de ventilación, acumulándose en capas densas sobre los componentes electrónicos críticos de la placa. Esta suciedad actúa como una manta térmica aislante que impide la correcta refrigeración de los circuitos impresos del procesador y las memorias. Para realizar una limpieza segura, es obligatorio apagar el equipo y desconectar el cable de alimentación eléctrica del tomacorriente de la pared. Utilizar ráfagas cortas de aire comprimido permite remover las partículas de polvo incrustadas en los rincones de difícil acceso físico. Es crucial sostener firmemente las aspas de los ventiladores con un dedo para evitar daños por giros inducidos involuntarios peligrosos. Jamás se deben usar paños húmedos o químicos abrasivos directamente sobre los circuitos integrados de silicio expuestos.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="Limpieza PC" style="border-color: rgba(56, 239, 125, 0.2)">
+                    </div>
                 </div>`;
         }
         else if (tema === 'calor') {
@@ -561,8 +767,13 @@
             subTitle.style.color = "#38ef7d";
             html += `
                 <div class="card-info" style="border-left-color: #38ef7d">
-                    <span class="label-paso">🔥 Control del Calor</span>
-                    El exceso de temperatura interna es el peor enemigo del hardware informático de alto rendimiento en la actualidad tecnológica. Cuando los componentes como el CPU o el GPU superan los límites de calor estipulados de fábrica, se activa automáticamente el estrangulamiento térmico. Este mecanismo de emergencia reduce drásticamente las frecuencias de reloj internas del chip para enfriarlo, provocando tirones severos en los videojuegos en curso. Monitorear las temperaturas en tiempo real con software especializado ayuda a detectar deficiencias en la pasta térmica de los disipadores. Una pasta térmica seca pierde sus propiedades de transferencia de calor y debe sustituirse periódicamente cada año de uso intensivo. Configurar curvas de velocidad personalizadas para los fanes asegura una extracción eficiente del aire caliente acumulado dentro del gabinete cerrado. Mantener el gabinete alejado de esquinas cerradas permite una correcta circulación y flujo de aire ambiental fresco.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">🔥 Control del Calor</span>
+                            El exceso de temperatura interna es el peor enemigo del hardware informático de alto rendimiento en la actualidad tecnológica. Cuando los componentes como el CPU o el GPU superan los límites de calor estipulados de fábrica, se activa automáticamente el estrangulamiento térmico. Este mecanismo de emergencia reduce drásticamente las frecuencias de reloj internas del chip para enfriarlo, provocando tirones severos en los videojuegos en curso. Monitorear las temperaturas en tiempo real con software especializado ayuda a detectar deficiencias en la pasta térmica de los disipadores. Una pasta térmica seca pierde sus propiedades de transferencia de calor y debe sustituirse periódicamente cada año de uso intensivo. Configurar curvas de velocidad personalizadas para los fanes asegura una extracción eficiente del aire caliente acumulado dentro del gabinete cerrado. Mantener el gabinete alejado de esquinas cerradas permite una correcta circulación y flujo de aire ambiental fresco.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=500&q=80" alt="Ventiladores PC" style="border-color: rgba(56, 239, 125, 0.2)">
+                    </div>
                 </div>`;
         }
         else if (tema === 'inicio-opt') {
@@ -570,8 +781,13 @@
             subTitle.style.color = "#38ef7d";
             html += `
                 <div class="card-info" style="border-left-color: #38ef7d">
-                    <span class="label-paso">🚀 Optimización de Inicio</span>
-                    Con el paso del tiempo, la instalación descontrolada de programas provoca que el arranque inicial de Windows se vuelva extremadamente lento. Muchas aplicaciones se configuran automáticamente de fábrica para ejecutarse de manera silenciosa en segundo plano en cuanto se enciende la PC de escritorio. Esto devora innecesariamente valiosos ciclos del procesador y reduce drásticamente la capacidad disponible dentro de los módulos de la memoria RAM activa. Para optimizar de raíz este apartado lógico, se debe acceder de forma directa al Administrador de Tareas presionando la combinación Ctrl + Shift + Esc. En la pestaña dedicada a las aplicaciones de inicio, es posible evaluar el nivel de impacto que genera cada software en el arranque general. Deshabilitar los servicios prescindibles como launchers de videojuegos o asistentes innecesarios agiliza la respuesta del sistema de inmediato. Esta simple configuración lógica devuelve la frescura original a computadoras con recursos de hardware limitados.
+                    <div class="info-layout">
+                        <div class="info-text">
+                            <span class="label-paso">🚀 Optimización de Inicio</span>
+                            Con el paso del tiempo, la instalación descontrolada de programas provoca que el arranque inicial de Windows se vuelva extremadamente lento. Muchas aplicaciones se configuran automáticamente de fábrica para ejecutarse de manera silenciosa en segundo plano en cuanto se enciende la PC de escritorio. Esto devora innecesariamente valiosos ciclos del procesador y reduce drásticamente la capacidad disponible dentro de los módulos de la memoria RAM activa. Para optimizar de raíz este apartado lógico, se debe acceder de forma directa al Administrador de Tareas presionando la combinación Ctrl + Shift + Esc. En la pestaña dedicada a las aplicaciones de inicio, es posible evaluar el nivel de impacto que genera cada software en el arranque general. Deshabilitar los servicios prescindibles como launchers de videojuegos o asistentes innecesarios agiliza la respuesta del sistema de inmediato. Esta simple configuración lógica devuelve la frescura original a computadoras con recursos de hardware limitados.
+                        </div>
+                        <img class="info-img" src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=500&q=80" alt="Optimizar Sistema" style="border-color: rgba(56, 239, 125, 0.2)">
+                    </div>
                 </div>`;
         }
 
